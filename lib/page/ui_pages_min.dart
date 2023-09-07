@@ -14,7 +14,7 @@ class MinPageState extends State<MinPage> {
         appBar: AppBar(
           title: Text(
             widget.title,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
           centerTitle: true,
           leading: IconButton(
@@ -22,10 +22,12 @@ class MinPageState extends State<MinPage> {
                 Icons.arrow_back,
                 color: Colors.white,
               ),
-              onPressed: () => {}),
+              onPressed: () => {
+                Navigator.pop(context)
+              }),
           backgroundColor: Colors.blue,
         ),
-        body: Center(
+        body: const Center(
           child: Text("MinPage"),
         ));
   }

@@ -22,7 +22,9 @@ class OrderPageState extends State<OrderPage> {
                 Icons.arrow_back,
                 color: Colors.white,
               ),
-              onPressed: () => {}),
+              onPressed: () => {
+                Navigator.pop(context)
+              }),
           backgroundColor: Colors.blue,
         ),
         body: Center(

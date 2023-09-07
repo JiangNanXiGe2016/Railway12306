@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:rw12306client/page/ui_page_detail.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -67,8 +68,8 @@ class HomePageState extends State<HomePage> {
             constraints: const BoxConstraints(minWidth: double.infinity),
             child: Container(
               width: double.infinity,
-              height: 50,
-              padding: const EdgeInsets.only(left: 20, right: 20),
+              height: 100,
+              padding: const EdgeInsets.only(left: 20, right: 20,top: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -133,7 +134,14 @@ class HomePageState extends State<HomePage> {
             padding:
                 const EdgeInsets.only(left: 50, top: 50, right: 50, bottom: 50),
             child: OutlinedButton(
-              onPressed: () => {},
+              onPressed: () => {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) {
+              return const DetailPage(title: "列车时刻表",);
+              }),
+              )
+              },
               style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
