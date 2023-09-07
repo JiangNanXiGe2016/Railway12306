@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:rw12306client/page/ui_pages_home.dart';
 import 'package:rw12306client/page/ui_pages_order.dart';
 import 'package:rw12306client/page/ui_pages_min.dart';
+import 'dart:io';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
+  if (Platform.isAndroid) {
+    // 以下两行 设置android状态栏为透明的沉浸。写在组件渲染之后，是为了在渲染后进行set赋值，覆盖状态栏，写在渲染之前MaterialApp组件会覆盖掉这个值。
+    SystemUiOverlayStyle systemUiOverlayStyle =
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -56,19 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          _pageNames[_selectIndex],
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back,color: Colors.white,),
-            onPressed: () => {
-                  if (_selectIndex != 0) {Navigator.pop(context, 0)},
-                }),
-        backgroundColor: Colors.blue,
-      ),
       body: _navPages[_selectIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[

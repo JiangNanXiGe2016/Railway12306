@@ -1,4 +1,4 @@
-#Wed Sep 06 16:58:26 CST 2023
-base.0=/Users/yangliang/Rw12306client/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+#Thu Sep 07 12:39:31 CST 2023
+base.0=D\:\\develop\\workspace\\Railway12306\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
