@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:rw12306client/page/ui_page_detail.dart';
+import 'package:rw12306client/page/ui_pages_city.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
@@ -31,7 +32,6 @@ class HomePageState extends State<HomePage> {
               fit: StackFit.loose,
               alignment: Alignment.topCenter,
               children: <Widget>[
-
                 Stack(
                   children: [
                     Positioned.fill(
@@ -42,8 +42,6 @@ class HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-
-
                 Container(
                   width: double.infinity,
                   height: 50,
@@ -55,9 +53,13 @@ class HomePageState extends State<HomePage> {
                     children: [
                       Text(
                         "安康",
-                        style: TextStyle(color: Colors.white,fontSize: 16),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
-                      Icon(Icons.arrow_drop_down,size: 20,color: Colors.white,)
+                      Icon(
+                        Icons.arrow_drop_down,
+                        size: 20,
+                        color: Colors.white,
+                      )
                     ],
                   ),
                 )
@@ -69,7 +71,7 @@ class HomePageState extends State<HomePage> {
             child: Container(
               width: double.infinity,
               height: 100,
-              padding: const EdgeInsets.only(left: 20, right: 20,top: 20),
+              padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -108,12 +110,23 @@ class HomePageState extends State<HomePage> {
             width: double.infinity,
             height: 100,
             padding: const EdgeInsets.only(left: 20, right: 20),
-            child: const TextField(
-              autofocus: true,
-              decoration: InputDecoration(
+            child: TextField(
+              autofocus: false,
+              decoration: const InputDecoration(
                   labelText: "城市",
                   hintText: "出发城市",
                   prefixIcon: Icon(Icons.location_city)),
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return const CityPage(
+                      title: "城市",
+                    );
+                  }),
+                )
+
+              },
             ),
           ),
           Container(
@@ -135,12 +148,14 @@ class HomePageState extends State<HomePage> {
                 const EdgeInsets.only(left: 50, top: 50, right: 50, bottom: 50),
             child: OutlinedButton(
               onPressed: () => {
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) {
-              return const DetailPage(title: "列车时刻表",);
-              }),
-              )
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return const DetailPage(
+                      title: "列车时刻表",
+                    );
+                  }),
+                )
               },
               style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.blue,
