@@ -4,15 +4,9 @@ import 'package:rw12306client/page/ui_pages_order.dart';
 import 'package:rw12306client/page/ui_pages_min.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
-
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 void main() {
   runApp(const MyApp());
-  if (Platform.isAndroid) {
-    // 以下两行 设置android状态栏为透明的沉浸。写在组件渲染之后，是为了在渲染后进行set赋值，覆盖状态栏，写在渲染之前MaterialApp组件会覆盖掉这个值。
-    SystemUiOverlayStyle systemUiOverlayStyle =
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-  }
 }
 
 class MyApp extends StatelessWidget {
@@ -21,13 +15,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      builder: EasyLoading.init(),
     );
   }
 }
@@ -43,11 +38,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectIndex = 0;
-  List<String> _pageNames = ["首页", "订单", "我的"];
-  List<Widget> _navPages = [
-    HomePage(title: "首页"),
+  final List<String> _pageNames = ["首页", "订单", "我的"];
+  final List<Widget> _navPages = [
+    const HomePage(title: "首页"),
     OrderPage(title: "订单"),
-    MinPage(title: "我的")
+    const MinPage(title: "我的")
   ];
 
   @override

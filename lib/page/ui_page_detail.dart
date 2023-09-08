@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:common_utils/common_utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:rw12306client/data/train_entity.dart';
 
 class DetailPage extends StatefulWidget {
@@ -53,6 +54,7 @@ class _TrainState extends State<DetailPage> {
               child: Center(
                 child: DecoratedBox(
                     decoration: const BoxDecoration(
+
                         shape: BoxShape.rectangle,
                         color: Color.fromRGBO(255, 240, 230, 100),
                         boxShadow: [
@@ -81,11 +83,21 @@ class _TrainState extends State<DetailPage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Container(
-                                      color: Colors.orange, width: 10, height: 10,
-                                  child:  const Text("始", style: TextStyle(color: Colors.white,fontSize: 7),textAlign: TextAlign.center,),),
-                                  Text(_trains[index]
-                                      .queryLeftNewDTO
-                                      .startStationName,),
+                                    color: Colors.orange,
+                                    width: 10,
+                                    height: 10,
+                                    child: const Text(
+                                      "始",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 7),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  Text(
+                                    _trains[index]
+                                        .queryLeftNewDTO
+                                        .startStationName,
+                                  ),
                                 ],
                               ),
                               RichText(
@@ -130,8 +142,16 @@ class _TrainState extends State<DetailPage> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Container(
-                                    color: Colors.green, width: 10, height: 10,
-                                    child:  const Text("终", style: TextStyle(color: Colors.white,fontSize: 7),textAlign: TextAlign.center,),),
+                                    color: Colors.green,
+                                    width: 10,
+                                    height: 10,
+                                    child: const Text(
+                                      "终",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 7),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
                                   Text(_trains[index]
                                       .queryLeftNewDTO
                                       .endStationName),
@@ -163,8 +183,8 @@ class _TrainState extends State<DetailPage> {
   }
 
   requestTrainList() async {
+    EasyLoading.show(status: '数据加载中');
     Dio http = Dio();
-
     LogUtil.init(tag: "http_get", isDebug: true, maxLen: 128);
     String url =
         "https://kyfw.12306.cn/otn/leftTicketPrice/query?leftTicketDTO.train_date=2023-09-14&leftTicketDTO.from_station=SHH&leftTicketDTO.to_station=BJP&leftTicketDTO.ticket_type=1&randCode=stzh";
@@ -196,6 +216,7 @@ class _TrainState extends State<DetailPage> {
     setState(() {
       _content = result;
       _trains = entity!.data;
+      EasyLoading.dismiss();
     });
   }
 }

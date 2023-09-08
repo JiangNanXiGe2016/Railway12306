@@ -53,29 +53,26 @@ Map<String, dynamic> _$ExtensionToJson(Extension instance) => <String, dynamic>{
 
 TrainStationsInfo _$TrainStationsInfoFromJson(Map<String, dynamic> json) =>
     TrainStationsInfo(
-  json['StationID'] as int,
-  json['StationName'] as String,
-  json['PinYin'] as String,
-  json['SearchPinYin'] as String,
-  json['PinYinHead'] as String,
-  json['FirstLetter'] as String,
-  json['HotFlag'] as int,
-  json['BureauID'] as int,
-  json['StationGradeID'] as int,
-  json['CtripCityID'] as int,
-  json['CityName'] as String?,
-  json['CityNameEn'] as String?,
-  json['CtiyFirstLetter'] as String,
-  json['CityCode'] as String?,
-  json['TeleCode'] as String?,
-  json['LastUpdateTime'] as String,
-  (json['Latitude'] as num).toDouble(),
-  (json['Longitude'] as num).toDouble(),
-  json['ProvinceName'] as String?,
-);
-
-
-
+      json['StationID'] as int,
+      json['StationName'] as String,
+      json['PinYin'] as String,
+      json['SearchPinYin'] as String,
+      json['PinYinHead'] as String,
+      json['FirstLetter'] as String,
+      json['HotFlag'] as int,
+      json['BureauID'] as int,
+      json['StationGradeID'] as int,
+      json['CtripCityID'] as int,
+      json['CityName'] as String?,
+      json['CityNameEn'] as String?,
+      json['CtiyFirstLetter'] as String,
+      json['CityCode'] as String?,
+      json['TeleCode'] as String?,
+      json['LastUpdateTime'] as String,
+      (json['Latitude'] as num).toDouble(),
+      (json['Longitude'] as num).toDouble(),
+      json['ProvinceName'] as String?,
+    );
 
 Map<String, dynamic> _$TrainStationsInfoToJson(TrainStationsInfo instance) =>
     <String, dynamic>{
